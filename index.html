@@ -3,14 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>Squircle rectangle CSS paint worklet</title>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta property="og:title" content="Squircle rectangle CSS paint worklet">
+  <meta property="og:image" content="https://squircle-rect.netlify.app/squircle-rect-css-paint-worklet.png">
+  <meta property="og:description" content="">
+  <meta name="twitter:image:alt" content="Screenshot with title, input for radius and an example squircle rectangle that says I AM SQUIRCLE in all caps.">
+  <meta name="twitter:site" content="@sakamies">
 </head>
 <body>
-
-  <label>Radius</label>
-  <input type="range" min=0 max=200 id="radius-input">
-  <div class="squircle-rect">
-    I AM SQUIRCLE
+  <div class="content">
+    <h1>
+      Squircle rectangle
+      <br>
+      CSS paint worklet
+    </h1>
+    <label>Radius</label>
+    <input type="range" min=0 max=200 id="radius-input">
+    <div class="squircle-rect">
+      I AM SQUIRCLE
+    </div>
+    <a href="https://twitter.com/sakamies">Twitter</a>
+    <a href="https://mastodon.social/@sakamies">Mastodon</a>
+    <a href="https://github.com/sakamies/squircle-rect">Github</a>
   </div>
 
   <script src="https://unpkg.com/css-paint-polyfill"></script>
@@ -27,7 +43,7 @@
   </script>
   <style>
     :root {
-      --cc: #00aeff;
+      --cc: #009de6;
     }
     html, body {
       height: 100%;
@@ -35,16 +51,25 @@
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
-      font-size: 2em;
+      font-size: 2rem;
+      line-height: 1;
+      text-align: center;
       display: grid;
-      place-content: center;
-      place-items: center;
       color: black;
       background: white;
     }
+    h1 {
+      font-size: 3rem;
+      margin: 2rem 0 2rem 0;
+    }
+    a {
+      font-size: 1.5rem;
+      color: var(--cc);
+      margin: 0 0 .5rem 0;
+    }
     input {
       accent-color: var(--cc);
-      margin: 0 0 1em 0;
+      margin: 0 0 1rem 0;
     }
 /*     @property --squircle-radius {
       syntax: '<integer>';
@@ -60,7 +85,14 @@
       syntax: '<string>';
       inherits: true;
     } */
+    .content {
+      display: grid;
+      place-content: center;
+      place-items: center;
+      margin: auto;
+    }
     .squircle-rect {
+      font-size: 2rem;
       font-weight: 900;
       display: grid;
       place-content: center;
@@ -74,6 +106,8 @@
       overflow: hidden;
       width: 300px;
       height: 200px;
+      margin: 0 0 2rem 0;
+      padding: 1rem;
       max-width: 100%;
     }
   </style>

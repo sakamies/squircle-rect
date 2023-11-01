@@ -1,2 +1,3 @@
-# squircle-rect
-Squircle rectangle css paint worklet
+# Squircle rectangle css paint worklet
+
+
