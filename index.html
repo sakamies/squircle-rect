@@ -23,15 +23,26 @@
     <input type="range" min=0 max=200 id="radius-input">
     <div class="squircle-rect">
       I AM SQUIRCLE
+      <br>
+      <small>Rectangle, resizable</small>
     </div>
-    <a href="https://twitter.com/sakamies">Twitter</a>
-    <a href="https://mastodon.social/@sakamies">Mastodon</a>
-    <a href="https://github.com/sakamies/squircle-rect">Github</a>
+    <p>
+      <small>Try resizing from the handle (on desktop) ⤴</small>
+    </p>
+    <p class="links">
+      <a href="https://twitter.com/sakamies">Twitter</a>
+      <a href="https://mastodon.social/@sakamies">Mastodon</a>
+      <a href="https://github.com/sakamies/squircle-rect">Github</a>
+    </p>
   </div>
 
+  <!-- Polyfill browsers that don't yet support CSS Paint API. -->
   <script src="https://unpkg.com/css-paint-polyfill"></script>
   <script>
+    //Import CSS Paint Worklet module.
     CSS.paintWorklet.addModule('/squircle-rect.js')
+
+    //Demo stuff
     const radiusInput = document.querySelector('#radius-input')
     const squirclerect = document.querySelector('.squircle-rect')
     function setRadius (e) {
@@ -44,6 +55,45 @@
   <style>
     :root {
       --cc: #009de6;
+    }
+    /* Some niceness for later, when browser support is all there.
+      @property --squircle-radius {
+      syntax: '<integer>';
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --squircle-smooth {
+      syntax: '<integer>';
+      inherits: true;
+      initial-value: .5;
+    }
+    @property --squircle-color {
+      syntax: '<string>';
+      inherits: true;
+    }
+    */
+    .squircle-rect {
+      font-size: 2rem;
+      font-weight: 900;
+      display: grid;
+      place-content: center;
+      place-items: center;
+      color: white;
+
+      /*The actual bit about the squircle*/
+      --squircle-color: var(--cc);
+      --squircle-radius: 100;
+      --squircle-smooth: .5; /*TODO: Smoothing parameter*/
+      background: paint(squircle-rect);
+      /*-------*/
+
+      resize: both;
+      overflow: hidden;
+      width: 300px;
+      height: 200px;
+      margin: 0 0 1rem 0;
+      padding: 1rem;
+      max-width: 100%;
     }
     html, body {
       height: 100%;
@@ -62,53 +112,28 @@
       font-size: 3rem;
       margin: 2rem 0 2rem 0;
     }
+    p {
+      margin: 0 0 2rem 0;
+    }
+    small {
+      font-size: 1rem;
+    }
     a {
-      font-size: 1.5rem;
       color: var(--cc);
-      margin: 0 0 .5rem 0;
     }
     input {
       accent-color: var(--cc);
       margin: 0 0 1rem 0;
     }
-/*     @property --squircle-radius {
-      syntax: '<integer>';
-      inherits: true;
-      initial-value: 0;
-    }
-    @property --squircle-smooth {
-      syntax: '<integer>';
-      inherits: true;
-      initial-value: .5;
-    }
-    @property --squircle-color {
-      syntax: '<string>';
-      inherits: true;
-    } */
     .content {
       display: grid;
       place-content: center;
       place-items: center;
       margin: auto;
     }
-    .squircle-rect {
-      font-size: 2rem;
-      font-weight: 900;
-      display: grid;
-      place-content: center;
-      place-items: center;
-      color: white;
-      --squircle-color: var(--cc);
-      --squircle-radius: 100;
-      --squircle-smooth: .5;
-      background: paint(squircle-rect);
-      resize: both;
-      overflow: hidden;
-      width: 300px;
-      height: 200px;
-      margin: 0 0 2rem 0;
-      padding: 1rem;
-      max-width: 100%;
+    .links {
+      font-size: 1.25rem;
+      margin: 0 0 .75rem 0;
     }
   </style>
 </body>
