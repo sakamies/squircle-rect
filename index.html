@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<body>
+
+  <label>Radius</label>
+  <input type="range" min=0 max=200 id="radius-input">
+  <div class="squircle-rect">
+    I AM SQUIRCLE
+  </div>
+
+  <script src="https://unpkg.com/css-paint-polyfill"></script>
+  <script>
+    CSS.paintWorklet.addModule('/squircle-rect.js')
+    const radiusInput = document.querySelector('#radius-input')
+    const squirclerect = document.querySelector('.squircle-rect')
+    function setRadius (e) {
+      console.log(squirclerect, e, e.target)
+      squirclerect.style.setProperty('--squircle-radius', e.target.value)
+    }
+    radiusInput.addEventListener('change', setRadius)
+    radiusInput.addEventListener('input', setRadius)
+  </script>
+  <style>
+    :root {
+      --cc: #00aeff;
+    }
+    html, body {
+      height: 100%;
+      min-height: 100%;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+      font-size: 2em;
+      display: grid;
+      place-content: center;
+      place-items: center;
+      color: black;
+      background: white;
+    }
+    input {
+      accent-color: var(--cc);
+      margin: 0 0 1em 0;
+    }
+/*     @property --squircle-radius {
+      syntax: '<integer>';
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --squircle-smooth {
+      syntax: '<integer>';
+      inherits: true;
+      initial-value: .5;
+    }
+    @property --squircle-color {
+      syntax: '<string>';
+      inherits: true;
+    } */
+    .squircle-rect {
+      font-weight: 900;
+      display: grid;
+      place-content: center;
+      place-items: center;
+      color: white;
+      --squircle-color: var(--cc);
+      --squircle-radius: 100;
+      --squircle-smooth: .5;
+      background: paint(squircle-rect);
+      resize: both;
+      overflow: hidden;
+      width: 300px;
+      height: 200px;
+      max-width: 100%;
+    }
+  </style>
+</body>
+</html>
