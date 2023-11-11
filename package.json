@@ -1,0 +1,28 @@
+{
+  "name": "squircle-rect",
+  "version": "1.0.0",
+  "description": "Squircle rectangle CSS paint worklet",
+  "main": "squircle-rect.js",
+  "scripts": {
+    "test": "make dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakamies/squircle-rect.git"
+  },
+  "keywords": [
+    "squircle",
+    "roundrect",
+    "border-radius",
+    "superellipse",
+    "css",
+    "paint",
+    "worklet"
+  ],
+  "author": "Ville Vanninen (https://pumpula.net)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sakamies/squircle-rect/issues"
+  },
+  "homepage": "https://github.com/sakamies/squircle-rect#readme"
+}
