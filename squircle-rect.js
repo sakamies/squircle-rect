@@ -14,7 +14,9 @@ registerPaint('squircle-rect', class {
     let r = radius
     r = Math.min(r, h/2, w/2)
 
-    //TODO: This is a heavily rounded approximation of a squircle with beziers. Uses similar beziers as the end result as figma, but this should really be based on some calculations instead of being a hard coded rounded approximation. (https://www.figma.com/blog/desperately-seeking-squircles/)
+    //TODO: This is a heavily rounded approximation of a squircle with beziers. Uses similar beziers as the end result as figma. (https://www.figma.com/blog/desperately-seeking-squircles/)
+    //TODO: Parameterize r*factors with smooth parameter.
+    //TODO: Radius and smooth parameters per corner? Would maybe need to work like border-radius shorthand works?
     x.fillStyle = color;
     x.beginPath();
     x.moveTo(r, 0); //start at top left
