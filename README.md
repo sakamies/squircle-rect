@@ -6,6 +6,7 @@ Import the module in javascript.
 CSS.paintWorklet.addModule('squircle-rect.js')
 ```
 
+For more on paint worklet usage with package managers and bundlers, there's [Houdini.how - Using Houdini](https://houdini.how/usage/)
 
 Use with `paint(squircle-rect)` function in css. Control color and radius with `--squircle-color` and `--squircle-radius` css variables.
 
